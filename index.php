@@ -21,6 +21,7 @@ $records = $humanRegister->getCsv()->getRecords();
 <body>
 
 <?php
+
 if (isset($_POST['submit'])) {
     if ($validate->checkInsertForm('name', 'surname', 'idNo')) {
         $humanRegister->insert('name', 'surname', 'idNo', 'info');
@@ -44,18 +45,13 @@ if (isset($_POST['submit'])) {
         <th id="header"> <?= $header ?></th>
     <?php endforeach; ?>
 
-    <?php if ($validate->issetAndNotEmpty('search')) echo "<th>Delete</th>"; ?>
+    <?php if (isset($_GET['search']) && $_GET['search'] !== '') echo "<th>Delete</th>"; ?>
 
     </tbody>
 
     <?php foreach ($records as $record):
 
-        if (isset($_POST['delete'])) {
-            $humanRegister->delete($record);
-            echo "<b>Record Deleted!</b><br><br>";
-        }
-
-        if ($validate->searchValidate($record, 'idNo', 'search')): ?>
+        if ($record['idNo'] === $_GET['search'] || !isset($_GET['search']) || $_GET['search'] === ''): ?>
 
             <tbody>
 
@@ -64,8 +60,15 @@ if (isset($_POST['submit'])) {
             <td id="idNumber"> <?= $record['idNo'] ?> </td>
             <td> <?= $record['information'] ?> </td>
 
-            <?php if ($validate->issetAndNotEmpty('search'))
+            <?php if (isset($_GET['search']) && $_GET['search'] !== '') {
                 echo "<td><form method='post'><input type='submit' name='delete' id='delete' value='Delete'></form></td>";
+            }
+
+            if (isset($_POST['delete'])) {
+                $humanRegister->delete($record);
+                echo "<b>Record Deleted!</b><br><br>";
+            }
+
             ?>
 
             </tbody>

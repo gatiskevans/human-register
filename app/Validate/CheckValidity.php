@@ -12,20 +12,4 @@
             }
             return true;
         }
-
-        public function issetAndNotEmpty(string $search): bool
-        {
-            if(isset($_GET[$search]) && $_GET[$search] !== ''){
-                return true;
-            }
-            return false;
-        }
-
-        public function searchValidate(array $record, string $idNumber, string $search): bool
-        {
-            if($record[$idNumber] === $_GET[$search] || !isset($_GET[$search]) || $_GET[$search] === ''){
-                return true;
-            }
-            return false;
-        }
     }
