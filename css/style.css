@@ -1,0 +1,44 @@
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#idNumber {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+a {
+    font: bold 16px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    border-radius: 4px;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+}
+
+a#backToMain {
+    font: bold 13px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    border-radius: 4px;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+}
+
+th#header {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+input#insertPerson {
+    font: bold 15px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    border-radius: 4px;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+}
